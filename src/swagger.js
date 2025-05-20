@@ -6,9 +6,9 @@ import swaggerUi from 'swagger-ui-express';
 const swaggerDefinition = {
     openapi: '3.0.0',
     info: {
-        title: 'API de Ventas',
+        title: 'API de Envios',
         version: '1.0.0',
-        description: 'Documentación de la API para gestión de usuarios, productos, stock y ventas.',
+        description: 'Documentación de la API para gestión de usuarios y envios.',
     },
     servers: [
         {

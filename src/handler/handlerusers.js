@@ -1,16 +1,5 @@
-import mysql from 'mysql2/promise'
+import { connection } from '../db.js';
 
-
-const config = {
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'fast_transport',
-    port: 3306
-}
-
-
-const connection = await mysql.createConnection(config);
 
 
 export const getAllUsers = async () => {
@@ -23,3 +12,34 @@ export const getAllUsers = async () => {
     }
 }
 
+
+
+export const loginUser = async (correo, contrasena) => {
+    try {
+        const [rows] = await connection.query(
+            `SELECT u.id_rol, r.nombre_rol AS rol,u.correo
+             FROM usuario u
+             JOIN rol r ON u.id_rol = r.id_rol
+             WHERE u.correo = ? AND u.contrasena = ?`,
+            [correo, contrasena]
+        );
+        return rows[0] || null;
+    } catch (error) {
+        console.error('Error en loginUser:', error);
+        throw error;
+    }
+};
+
+
+export const findUserByCorreo = async (correo) => {
+    try {
+        const [rows] = await connection.query(
+            'SELECT * FROM usuario WHERE correo = ?',
+            [correo]
+        );
+        return rows[0] || null;
+    } catch (error) {
+        console.error('Error en findUserByCorreo:', error);
+        throw error;
+    }
+};
