@@ -1,24 +1,20 @@
-// import express, { json } from 'express';
-
-// app.js
 import express, { json } from 'express';
-import cors from 'cors';
-import { createPool } from 'mysql2/promise';
+import { corsMiddleware } from './middlewares/cors.js';
 import { swaggerUi, swaggerSpec } from './swagger.js';
 import routerUsers from './controllers/users.js';
 import routerClientes from './controllers/clientes.js';
 import routerEstadoEnvio from './controllers/estadoEnvio.js';
 import routerRutas from './controllers/rutas.js';
 import routerEnvio from './controllers/envio.js';
+import routerConductor from './controllers/conductor.js';
 import { handleError } from './util/responseUtil.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
-
 // Middleware
-app.use(cors());
+app.use(corsMiddleware());
 app.use(json());
+app.disable('x-powered-by');
 
 
 
@@ -29,7 +25,7 @@ app.use('/clientes', routerClientes); // ✅ Aquí estás registrando las rutas
 app.use('/estado_envio', routerEstadoEnvio); // ✅ Aquí estás registrando las rutas
 app.use('/envio', routerEnvio); // ✅ Aquí estás registrando las rutas
 app.use('/rutas', routerRutas); // ✅ Aquí estás registrando las rutas
-
+app.use('/conductor', routerConductor); // ✅ Aquí estás registrando las rutas
 
 app.use(handleError);
 

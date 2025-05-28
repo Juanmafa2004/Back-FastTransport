@@ -13,7 +13,12 @@ const swaggerDefinition = {
     servers: [
         {
             url: 'http://localhost:3000', // Usar variable de entorno alojado el back
+            description: 'Localhost'
         },
+        {
+            url: 'https://4s1nkwvt-3000.use.devtunnels.ms',
+            description: 'Túnel de desarrollo'
+        }
     ],
 };
 

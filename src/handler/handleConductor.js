@@ -15,6 +15,10 @@ export const getAllConductor = async (params = {}) => {
             conditions.push('nombre = ?');
             values.push(params.nombre);
         }
+        if(params.id_usuario) {
+            conditions.push('id_usuario = ?');
+            values.push(params.id_usuario);
+        }
         if (conditions.length > 0) {
             query += ' WHERE ' + conditions.join(' AND ');
         }

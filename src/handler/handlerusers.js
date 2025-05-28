@@ -17,7 +17,7 @@ export const getAllUsers = async () => {
 export const loginUser = async (correo, contrasena) => {
     try {
         const [rows] = await connection.query(
-            `SELECT u.id_rol, r.nombre_rol AS rol,u.correo
+            `SELECT u.id_usuario,u.id_rol, r.nombre_rol AS rol,u.correo
              FROM usuario u
              JOIN rol r ON u.id_rol = r.id_rol
              WHERE u.correo = ? AND u.contrasena = ?`,
