@@ -8,8 +8,9 @@ import routerRutas from './controllers/rutas.js';
 import routerEnvio from './controllers/envio.js';
 import routerConductor from './controllers/conductor.js';
 import { handleError } from './util/responseUtil.js';
+import { PORT } from './config.js';
 const app = express();
-const PORT = process.env.PORT || 3000;
+
 
 // Middleware
 app.use(corsMiddleware());
