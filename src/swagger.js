@@ -18,6 +18,9 @@ const swaggerDefinition = {
         {
             url: 'https://4s1nkwvt-3000.use.devtunnels.ms',
             description: 'Túnel de desarrollo'
+        },{
+            url: 'https://back-fasttransport-1.onrender.com',
+            description: 'Producción'
         }
     ],
 };
